@@ -23,7 +23,11 @@ const productSlice = createSlice({
             state.ekart.push(action.payload);
         },
         removeFromCart: (state, action) => {
-            state.ekart = state.ekart.filter((item) => item.id !== action.payload);
+            // state.ekart = state.ekart.filter((item) => item.id !== action.payload);
+            const index = state.ekart.findIndex((item) => item.id === action.payload);
+            if(index !== -1){
+                state.ekart.splice(index,1);
+            }
         },
         clearCart: (state) => {
             state.ekart = [];
